@@ -1,0 +1,323 @@
+body {
+	margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.body-container {
+	width: 1920px;
+	height: 1080px;
+	/* background-color: tomato; */
+}
+
+.middle-container {
+	width: 1920px;
+	height: 1030px;
+	display: flex;
+}
+
+.middle-container .left-container {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.middle-container .right-container {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.right-container .next-games-list-container {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 30px 50px 30px;
+}
+
+.right-container .next-games-list-container .next-list-main-title-container {
+	width: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.right-container .next-games-list-container .next-list-title-container {
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.right-container .next-games-list-container .next-game-container:first-child {
+	height: 20%;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	margin: 0 0 60px 0;
+}
+
+.right-container .next-games-list-container .next-game-container {
+	border: 1px solid black;
+	padding: 15px;
+	margin: 15px 0;
+}
+
+.right-container .next-games-list-container .next-game-container .next-game-info-container {
+	height: 10%;
+	width: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.next-game-info-container .next-game-category {
+	width: 50%;
+}
+
+.next-game-info-container .next-game-runner {
+	width: 50%;
+}
+
+.left-container .incentives-container {
+	width: 100%;
+	height: 50%;
+	/* overflow: hidden; */
+	margin-top: 20px;
+}
+
+.incentive-title-container {
+	/* display: flex; */
+	display: none;
+	width: 100%;
+	/* height: 50px; */
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.progress-bar-container {
+	width: 100%;
+	height: 400px;
+	/* display: flex; */
+	display: none;
+}
+
+.progress-bar-subcontainer {
+	width: 90%;
+	height: 400px;
+	position: relative;
+	background: #f3efe6;
+	/* overflow: hidden; */
+	display: flex;
+}
+
+.progress-bar-subcontainer .progress-bar {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+.progress-bar {
+	min-width: 100px;
+	background-color: #e4c465;
+	animation: width 3s ease-in-out;
+	transition: width 3s ease-in-out;
+	animation-fill-mode: both;
+}
+
+.progress-bar-porcentage {
+	margin-top: 110px;
+}
+
+.progress-bar-total-container {
+	width: 10%;
+	height: 400px;
+	background: red
+}
+
+@keyframes progressBar {
+	0% {
+		width: 0;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
+.bidwar-progress-bars-container {
+	width: 100%;
+	height: 400px;
+	/* display: flex; */
+	display: none;
+	flex-direction: column;
+}
+
+.bid-progress-bar-container {
+	width: 100%;
+	height: 70px;
+	display: flex;
+}
+
+.bid-progress-bar-subcontainer{
+	width: 90%;
+	height:50px;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+}
+
+.bid-progress-bar {
+	height:100%;
+	background-color: #e4c465;
+	/* animation: width 3s ease-in-out; */
+	transition: width 3s ease-in-out;
+	animation-fill-mode: both;
+	display: flex;
+	align-items: center;
+}
+
+.bid-progress-bar-total-container{
+	width: 10%;
+	height: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items:center;
+	justify-content: flex-end;
+	background-color: chocolate;
+}
+
+.pie-container {
+	display: none;
+	width: 100%;
+	height: 100%;
+	/* margin-top: 50px; */
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.pie-titles-container {
+	display: block;
+	position: absolute;
+}
+
+.winner-bid-container {
+	/* display: none; */
+	position: absolute;
+	left: -300px;
+	/* top: -100px; */
+	z-index: 1;
+}
+
+.loser-bid-container {
+	/* display: none; */
+	position: absolute;
+	left: 200px;
+	top: 250px;
+	z-index: 1;
+}
+
+.chart-container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	/* margin-top: 50px; */
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.chart-svg-container {
+	display: block;
+}
+
+.svg-container {
+	/* height:400px;
+	width:400px; */
+	/* display: none; */
+}
+
+.bg-circle {
+	fill: black;
+}
+
+.pie {
+	transition: stroke-dasharray 2s ease;
+	animation: stroke-dasharray 2s ease;
+}
+
+.prize-twitter-container {
+	width: 100%;
+	height: 50%;
+	margin-bottom: 20px;
+}
+
+.aux-bar-container {
+	position: absolute;
+	display: flex;
+	/* top: 1030px; */
+	width: 1920px;
+	height: 50px;
+	background-color: cadetblue;
+
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo-sre8-aux-container {
+	width: 7%;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 10px 0 0;
+}
+
+.main-aux-content-container {
+	width: 76%;
+	height: inherit;
+	display: flex;
+	flex: 1 1 auto;
+	background-color: wheat;
+	align-items: center;
+}
+
+.main-aux-content-container .first-section-container {
+	height: inherit;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex: 1 1 auto;
+	padding: 0 0 0 20px;
+}
+
+.main-aux-content-container .second-section-container {
+	height: inherit;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex: 1 1 auto;
+	padding: 0 0 0 20px;
+}
+
+.total-amount-container {
+	height: inherit;
+	width: 10%;
+	/* width: 200px; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 10px 0 10px;
+}
+
+.logo-aecc-container {
+	width: 7%;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

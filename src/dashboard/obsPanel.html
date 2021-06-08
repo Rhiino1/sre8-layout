@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OBS Panel</title>
+	<script src="https://kit.fontawesome.com/349210808d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="login-container">
+		<label for="obs-address">Address:</label>
+		<input type="text" name="obs-address" id="obs-address">
+		<button id="obs-connect-btn">Connect</button>
+		<!-- <span><i class="fas fa-volume-up"></i></span> -->
+	</div>
+	<div class="obs-panel-container">
+		<button id="obs-disconnect-btn">Disconnect</button>
+		<h2>Mezclador</h2>
+		<div class="mixer-container">
+			<!-- <div class="source-sound-container">
+				<label for="fuente1">Fuente 1</label>
+				<input type="range" id="fuente1" name="fuente1" min="-100" max="26" step=".1">
+			</div> -->
+		</div>
+	</div>
+	<hr style="width:100%">
+	<div class="music-player">
+		<h2>Musica</h2>
+		<p>*Recuerda que debe estar cargada la fuente de la musica en obs para poder usar el panel*</p>
+		<div class="btn-music-player">
+			<button id="btn-play" class="btn"><span><i class="fas fa-play"></i></span></button>
+			<button id="btn-pause" class="btn"><span><i class="fas fa-pause"></i></span></button>
+			<button id="btn-next" class="btn"><span><i class="fas fa-angle-double-right"></i></span></button>
+		</div>
+		<span id="musica4"></span>
+		<span id="musica5"></span>
+	</div>
+</body>
+
+</html>

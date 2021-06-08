@@ -1,0 +1,90 @@
+{
+  "name": "webpack",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "Cesar Solano",
+    "email": "csolanoc@unal.edu.co"
+  },
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack",
+    "startcg": "node ../../index.js"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.1.1",
+    "dashboardPanels": [
+      {
+        "name": "generalPanel",
+        "title": "Panel general",
+        "width": 6,
+        "file": "generalPanel.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "obsPanel",
+        "title": "Panel OBS",
+        "width": 4,
+        "file": "obsPanel.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "layout16-9.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "timer.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "layoutEspera.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "music.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "mount": [
+      {
+        "directory": "music",
+        "endpoint": "music"
+      }
+    ]
+  },
+  "repository": "https://github.com/TBS-Tutorials/webpack-example-bundle.git",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.4.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chart.js": "^3.3.0",
+    "chartjs-plugin-datalabels": "^1.0.0",
+    "cors": "^2.8.5",
+    "cryptr": "^6.0.2",
+    "get-youtube-title": "^1.0.1",
+    "howler": "^2.2.1",
+    "nanotimer": "^0.3.15",
+    "obs-websocket-js": "^4.0.2"
+  }
+}

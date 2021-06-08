@@ -1,0 +1,51 @@
+.obs-panel-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.mixer-container {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.source-sound-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-subDiv-container{
+  display: flex;
+	flex-direction: row;
+	align-items: center;
+  height: 25px;
+}
+
+.label-mixer {
+	flex: 1 1 20px;
+}
+
+.input-mixer {
+	flex: 1 1 auto;
+}
+
+.input-number-mixer {
+	flex: 0 0 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.mute-btn-mixer{
+  flex: 0 0 auto;
+  background: none;
+  height: 30px;
+  width: 35px;
+  padding: 0;
+  padding-bottom: 5px;
+  border: none;
+}
+
+.mute-btn-mixer span i{
+  font-size: 20px;
+  color: whitesmoke;
+}
