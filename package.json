@@ -45,6 +45,21 @@
         "height": 1080
       },
       {
+        "file": "layout2Race.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "layout3Race.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "layout4Race.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "timer.html",
         "width": 1920,
         "height": 1080
@@ -59,18 +74,13 @@
         "width": 1920,
         "height": 1080
       }
-    ],
-    "mount": [
-      {
-        "directory": "music",
-        "endpoint": "music"
-      }
     ]
   },
   "repository": "https://github.com/TBS-Tutorials/webpack-example-bundle.git",
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^4.3.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.4.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",

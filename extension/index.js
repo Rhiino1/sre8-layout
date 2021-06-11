@@ -13,6 +13,7 @@ module.exports = function (nodecg) {
 
 	require('./horarioAPI')
 	require('./oengusAPI')
+	require('./oengusWebhook');
 
 	require('./music')
 	require('./util/obs-connection');

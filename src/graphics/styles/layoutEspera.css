@@ -4,41 +4,163 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: kimberley;
+	src: url("../../../images/kimberley_bl.ttf");
+}
+
+.neon {
+	filter: drop-shadow(0 0 0.3rem #00DFCC);
+	animation: pulsate 4s infinite alternate;
+}
+
 .body-container {
 	width: 1920px;
 	height: 1080px;
 	/* background-color: tomato; */
+	font-family: kimberley;
+}
+
+.bg-container {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	/* background: url(../../../images/vlc_yxf8mfldzZ.png); */
+	background: url(../../../images/background.mp4);
+	background-size: 100%;
+	filter: brightness(60%) contrast(110%);
+	z-index: -10;
+}
+
+.bg-video {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
 }
 
 .middle-container {
 	width: 1920px;
-	height: 1030px;
+	height: 899px;
 	display: flex;
+}
+
+.top-container {
+	width: 1920px;
+	height: 130px;
+	/* display: inline; */
+}
+
+.logo-sre8-container {
+	position: absolute;
+	width: 300px;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 10px 0 0;
+}
+
+.logo-bg-wrap {
+	filter: drop-shadow(0 0 0.3rem #00DFCC);
+}
+
+.logo-bg-container {
+	position: relative;
+	width: 340px;
+	height: 127px;
+	background: url(../../../images/logo-sre8-espera-v1.png);
+	/* clip-path: polygon(0px 8px, 169px 8px, 174px 0px, 283px 0px, 298px, 13px, 298px 93px, 282px 108px, 274px 108px, 293px 90px, 293px 23px, 279px 11px, 0px 11px) */
+}
+
+.logo-sre8 {
+	position: absolute;
+	width: 338px;
+	height: auto;
+	bottom: 1px;
+}
+
+.total-amount-container {
+	position: relative;
+	left: 1570px;
+	width: 350px;
+	height: 121px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.total-amount-bg-wrap {
+	position: absolute;
+	filter: drop-shadow(0 0 0.3rem #00DFCC);
+}
+
+.total-amount-bg-container {
+	position: relative;
+	width: 350px;
+	height: 121px;
+	background: url(../../../images/dinero-total-espera-v1.png);
+	/* clip-path: polygon(0px 8px, 169px 8px, 174px 0px, 283px 0px, 298px, 13px, 298px 93px, 282px 108px, 274px 108px, 293px 90px, 293px 23px, 279px 11px, 0px 11px) */
+}
+
+.total-amount {
+	position: absolute;
+	font-size: 80px;
+	margin: 0;
+	color: whitesmoke;
 }
 
 .middle-container .left-container {
 	width: 50%;
-	height: 100%;
+	height: 900px;
 	display: flex;
 	flex-direction: column;
 }
 
+.incentives-bg-wrap {
+	margin-top: 20px;
+}
+
+.incentive-bg-1 {
+	position: absolute;
+	width: 871px;
+	height: 80px;
+	background: url(../../../images/incentive-box-espera-v1.png);
+}
+
+.incentive-bg-2 {
+	position: absolute;
+	width: 871px;
+	height: 80px;
+	background: url(../../../images/incentive-box-espera-bg-v1.png);
+}
+
+.incentive-bg-3 {
+	position: absolute;
+	width: 61px;
+	height: 577px;
+	left: 811px;
+	background: url(../../../images/incentive-opener-espera-v1.png);
+}
+
 .middle-container .right-container {
 	width: 50%;
-	height: 100%;
+	height: 900px;
 	display: flex;
 	flex-direction: column;
 }
 
 .right-container .next-games-list-container {
 	width: auto;
+	height: 876px;
 	display: flex;
 	flex-direction: column;
-	padding: 20px 30px 50px 30px;
+	padding: 0px 30px 50px 30px;
+	color: whitesmoke;
 }
 
 .right-container .next-games-list-container .next-list-main-title-container {
 	width: auto;
+	height: 60px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -46,46 +168,127 @@ body {
 
 .right-container .next-games-list-container .next-list-title-container {
 	width: auto;
+	height: 60px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 }
 
-.right-container .next-games-list-container .next-game-container:first-child {
-	height: 20%;
-	width: auto;
+.first-divisor {
+	width: 77%;
+	height: 3%;
+	background-color: white;
+	margin-left: 31px;
+	filter: drop-shadow(0 0 0.3rem white);
+}
+
+.second-divisor {
+	width: 77%;
+	height: 2%;
+	background-color: white;
+	margin-left: 36px;
+	filter: drop-shadow(0 0 0.3rem white);
+}
+
+.next-game-bg-main-container-1 {
+	position: absolute;
+	height: 194px;
+	width: 870px;
+	background: url(../../../images/game-principal-espera-bordes-v1.png);
+	filter: drop-shadow(0 0 0.3rem #e40052);
+}
+
+.next-game-bg-not-main-container-1 {
+	position: absolute;
+	height: 157px;
+	width: 870px;
+	/* padding: 15px;
+	margin: 0 0 60px 0; */
+	background: url(../../../images/game-siguiente-espera-bordes-v1.png);
+	filter: drop-shadow(0 0 0.3rem #8d3667);
+}
+
+.main-game-container {
+	height: 194px;
+	width: 870px;
+	/* padding: 15px;
+	margin: 0 0 60px 0; */
+	background: url(../../../images/game-principal-espera-fondo-v1.png);
+}
+
+.not-main-game-container {
+	height: 157px;
+	width: 870px;
+	margin-bottom: 30px;
+	background: url(../../../images/game-siguiente-espera-fondo-v1.png)
+}
+
+.next-game-container {
 	display: flex;
 	flex-direction: column;
-	padding: 15px;
-	margin: 0 0 60px 0;
+	/* border: 1px solid black; */
+	/* padding: 15px;
+	margin: 15px 0; */
 }
 
-.right-container .next-games-list-container .next-game-container {
-	border: 1px solid black;
-	padding: 15px;
-	margin: 15px 0;
-}
-
-.right-container .next-games-list-container .next-game-container .next-game-info-container {
-	height: 10%;
-	width: auto;
+.next-game-runners-estimate-container {
+	/* width: 660px;
+	height: 43px; */
+	width: 75%;
+	height: 26%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	margin-left: 25px;
+	color: #8a898c;
+	filter: none;
 }
 
-.next-game-info-container .next-game-category {
+.next-game-name-container {
+	height: 45%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-left: 25px;
+	text-shadow: 0 0 0.3rem #8d3667;
+}
+
+.main-game-container .next-game-container .next-game-name-container {
+	text-shadow: 0 0 0.3rem #e40052;
+}
+
+.next-game-category-platform-container {
+	height: 25%;
+	width: 78%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 5px;
+	margin-left: 182px;
+	color: #8a898c;
+	filter: none;
+}
+
+.next-game-category {
+	/* width: 52%; */
+	flex: 0 0 459px;
+}
+
+.next-game-platform {
+	flex: 0 0 160px;
+	/* width: 30%; */
+}
+
+.next-game-runner {
 	width: 50%;
 }
 
-.next-game-info-container .next-game-runner {
-	width: 50%;
-}
-
-.left-container .incentives-container {
+.incentives-container {
 	width: 100%;
 	height: 50%;
 	/* overflow: hidden; */
-	margin-top: 20px;
+	color: white;
 }
 
 .incentive-title-container {
@@ -93,24 +296,32 @@ body {
 	display: none;
 	width: 100%;
 	/* height: 50px; */
+	margin-left: 19px;
 	justify-content: flex-start;
 	align-items: center;
 }
 
 .progress-bar-container {
 	width: 100%;
-	height: 400px;
+	height: 370px;
 	/* display: flex; */
 	display: none;
 }
 
 .progress-bar-subcontainer {
 	width: 90%;
-	height: 400px;
+	height: 370px;
 	position: relative;
-	background: #f3efe6;
+	/* background: #f3efe6; */
+	/* background: rgba(243, 239, 230, 0.185); */
+	background: #0a1509;
 	/* overflow: hidden; */
 	display: flex;
+	border-style: solid;
+	border-color: #23ad00;
+	border-left: 0px;
+	border-right: 0px;
+	filter: drop-shadow(0 0 0.3rem #23ad00);
 }
 
 .progress-bar-subcontainer .progress-bar {
@@ -123,20 +334,40 @@ body {
 
 .progress-bar {
 	min-width: 100px;
-	background-color: #e4c465;
+	background-color: #216f1e;
 	animation: width 3s ease-in-out;
 	transition: width 3s ease-in-out;
 	animation-fill-mode: both;
+	border-right: 5px solid #23ad00;
+	box-shadow: 1px 0 12px -1px #23ad00;
+}
+
+.progress-bar-current-title {
+	font-size: 28px;
+	margin: 0;
 }
 
 .progress-bar-porcentage {
 	margin-top: 110px;
+	font-size: 50px;
 }
 
 .progress-bar-total-container {
-	width: 10%;
-	height: 400px;
-	background: red
+	width: 14%;
+	height: 370px;
+	/* background: rgba(243, 239, 230, 0.185); */
+	background: #0a1509;
+	/* background: red */
+	border-style: solid;
+	border-color: #23ad00;
+	/* filter: drop-shadow(0 0 0.3rem #23ad00); */
+	box-shadow: 0px 0 15px -1px #23ad00;
+}
+
+.progress-bar-total-title {
+	font-size: 28px;
+	margin: 0;
+	margin-left: 5px;
 }
 
 @keyframes progressBar {
@@ -159,22 +390,27 @@ body {
 
 .bid-progress-bar-container {
 	width: 100%;
-	height: 70px;
+	height: 100px;
 	display: flex;
 }
 
-.bid-progress-bar-subcontainer{
+.bid-progress-bar-subcontainer {
 	width: 90%;
-	height:50px;
+	height: 63px;
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	align-items:center;
+	align-items: center;
+	border-style: solid;
+	border-color: #691677;
+	border-left: 0;
+	border-right: 0;
+	box-shadow: 0px 0 15px -1px #691677;
 }
 
 .bid-progress-bar {
-	height:100%;
-	background-color: #e4c465;
+	height: 100%;
+	background-color: #470f51;
 	/* animation: width 3s ease-in-out; */
 	transition: width 3s ease-in-out;
 	animation-fill-mode: both;
@@ -182,14 +418,15 @@ body {
 	align-items: center;
 }
 
-.bid-progress-bar-total-container{
+.bid-progress-bar-total-container {
 	width: 10%;
-	height: 50px;
+	height: 63px;
 	display: flex;
 	flex-direction: row;
-	align-items:center;
-	justify-content: flex-end;
+	align-items: center;
+	justify-content: center;
 	background-color: chocolate;
+	border: 4.5px solid #470f51;
 }
 
 .pie-container {
@@ -207,26 +444,63 @@ body {
 }
 
 .winner-bid-container {
+	background-color: #ffffff42;
 	/* display: none; */
+	display: flex;
+	flex-direction: column;
 	position: absolute;
-	left: -300px;
-	/* top: -100px; */
+	left: -380px;
+	top: 35px;
 	z-index: 1;
+	width: auto;
+	min-width: 150px;
+	max-width: 281px;
+	justify-content: center;
+	align-items: center;
+}
+
+.winner-bid-text {
+	margin: 0;
+	font-size: 20px;
+}
+
+.winner-bid-amount-text {
+	margin: 0;
+	font-size: 30px;
 }
 
 .loser-bid-container {
+	background-color: #ffffff42;
 	/* display: none; */
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	left: 200px;
 	top: 250px;
 	z-index: 1;
+	width: max-content;
+	/* width: 231px; */
+	min-width: 150px;
+	max-width: 231px;
+	justify-content: center;
+	align-items: center;
+}
+
+.loser-bid-text {
+	margin: 0;
+	font-size: 20px;
+}
+
+.loser-bid-amount-text {
+	margin: 0;
+	font-size: 30px;
 }
 
 .chart-container {
 	display: flex;
-	width: 100%;
+	width: 85%;
 	height: 100%;
-	/* margin-top: 50px; */
+	margin-top: 20px;
 	justify-content: center;
 	align-items: flex-start;
 }
@@ -242,18 +516,112 @@ body {
 }
 
 .bg-circle {
-	fill: black;
+	fill: #7d167452;
 }
 
 .pie {
+	fill: none;
 	transition: stroke-dasharray 2s ease;
 	animation: stroke-dasharray 2s ease;
+	stroke: #801fa5;
 }
 
 .prize-twitter-container {
-	width: 100%;
-	height: 50%;
-	margin-bottom: 20px;
+	width: 91%;
+	height: 278px;
+	padding-bottom: 20px;
+	padding-top: 127px;
+	display: flex;
+}
+
+
+
+.title-prize-container {
+	width: 370px;
+	height: 69px;
+	/* background: yellow; */
+	margin-right: 46px;
+	margin-left: 24px;
+}
+
+.title-prize-name-container {
+	color: white;
+	width: 370px;
+	height: 113px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.title-prize {
+	padding-left: 10px;
+	margin: 0;
+	font-size: 26px;
+	height: 66px;
+}
+
+.title-prize-amount {
+	margin: 0;
+	height: 41px;
+	padding-left: 10px;
+}
+
+.title-prize-bg-container-wrap {
+	position: absolute;
+	width: 370px;
+	height: 69px;
+	/* background: red; */
+}
+
+.title-prize-bg-container-1 {
+	position: absolute;
+	width: 370px;
+	height: 69px;
+	background: url(../../../images/fondo-nombre-premios-espera-marco-v1.png)
+}
+
+.title-prize-bg-container-2 {
+	position: absolute;
+	width: 370px;
+	height: 69px;
+	background: url(../../../images/fondo-premios-espera-bg-v1.png)
+}
+
+.prize-container {
+	width: 370px;
+	height: 269px;
+	/* background: red; */
+}
+
+.prize-bg-container-wrap {
+	position: absolute;
+	width: 370px;
+	height: 269px;
+	/* background: red; */
+}
+
+.prize-bg-container-1 {
+	position: absolute;
+	width: 370px;
+	height: 269px;
+	background: url(../../../images/fondo-premios-espera-marco-v1.png)
+}
+
+.prize-bg-container-2 {
+	position: absolute;
+	width: 370px;
+	height: 269px;
+	background: url(../../../images/fondo-premios-espera-bg-v1.png)
+}
+
+.prize-img-container {
+	width: inherit;
+	height: inherit;
+}
+
+.prize-img {
+	width: inherit;
+	height: inherit;
 }
 
 .aux-bar-container {
@@ -262,10 +630,14 @@ body {
 	/* top: 1030px; */
 	width: 1920px;
 	height: 50px;
-	background-color: cadetblue;
-
+	/* background-color: cadetblue; */
+	/* background-color: #b3fff6; */
+	border-top: 1px solid #2eefd7;
+	/* background-color: rgba(28, 133, 119, 0.5); */
+	background-color: rgba(46, 239, 215, 0.2);
 	justify-content: space-between;
 	align-items: center;
+	color: whitesmoke;
 }
 
 .logo-sre8-aux-container {
@@ -282,8 +654,17 @@ body {
 	height: inherit;
 	display: flex;
 	flex: 1 1 auto;
-	background-color: wheat;
+	/* background-color: wheat; */
 	align-items: center;
+}
+
+.aux-divisor-container-initial {
+	position: absolute;
+	width: 10px;
+	height: 80%;
+	/* left: 17.2%; */
+	left: 0.7%;
+	border-left: 10px double #e40052;
 }
 
 .main-aux-content-container .first-section-container {
@@ -292,7 +673,16 @@ body {
 	justify-content: flex-start;
 	align-items: center;
 	flex: 1 1 auto;
-	padding: 0 0 0 20px;
+	padding: 0 0 0 107px;
+}
+
+.host-icon {
+	font-size: 30px;
+}
+
+.host-name {
+	font-size: 22px;
+	padding-left: 10px;
 }
 
 .main-aux-content-container .second-section-container {
@@ -300,19 +690,25 @@ body {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	flex: 1 1 auto;
-	padding: 0 0 0 20px;
+	flex: 1 1 243px;
 }
 
-.total-amount-container {
-	height: inherit;
-	width: 10%;
-	/* width: 200px; */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 10px 0 10px;
+.song-icon {
+	font-size: 30px;
 }
+
+.song-name {
+	font-size: 22px;
+	padding-left: 10px;
+}
+
+.aux-divisor-total {
+	width: 6px;
+	height: 100%;
+	background-color: #00DFCC;
+	box-shadow: 0 0 0.3rem #00DFCC;
+}
+
 
 .logo-aecc-container {
 	width: 7%;
@@ -320,4 +716,10 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* background: url(../../../images/aecc-v1.png); */
+}
+
+.aecc-logo {
+	width: 129px;
+	height: auto;
 }

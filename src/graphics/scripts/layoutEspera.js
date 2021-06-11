@@ -1,16 +1,28 @@
 import '../styles/layoutEspera.css';
 
 
-const songNameText = document.querySelector('#songName');
+const songNameText = document.querySelector('.song-name');
+const hostText = document.querySelector('.host-name');
 
 const songName = nodecg.Replicant('songName');
 const nextRunsListSchedule = nodecg.Replicant('nextRunsListSchedule');
+const totalDonationAmount = nodecg.Replicant('totalDonationAmount');
+const generalRunInfo = nodecg.Replicant('generalRunInfo');
 
 let nextGamesListContainer = document.querySelector('.next-games-list-container');
+let totalAmount = document.querySelector('.total-amount');
 
-NodeCG.waitForReplicants(songName, nextRunsListSchedule).then(() => {
+NodeCG.waitForReplicants(songName, nextRunsListSchedule, totalDonationAmount).then(() => {
 	songName.on('change', (value) => {
 		songNameText.textContent = value.name;
+	})
+
+	generalRunInfo.on('change', (value) =>{
+		hostText.textContent = value.host;
+	})
+
+	totalDonationAmount.on('change', (value) => {
+		totalAmount.textContent = formatter.format(value);
 	})
 
 	nextRunsListSchedule.on('change', (newValue, oldValue) => {
@@ -20,17 +32,28 @@ NodeCG.waitForReplicants(songName, nextRunsListSchedule).then(() => {
 		console.log(nextGamesListContainer.childNodes.length);
 		for (let i = 0; i < newValue.length; i++) {
 			let nextGameContainer = document.createElement('div');
-			nextGameContainer.classList.add('next-game-container');
+
+			let nextGameBgContainer = document.createElement('div');
+
+
 			if (i === 0) {
 				let nextListMainTitleContainer = document.createElement('div');
 				nextListMainTitleContainer.classList.add('next-list-main-title-container');
 				nextGamesListContainer.appendChild(nextListMainTitleContainer);
 
+				nextGameBgContainer.classList.add('next-game-bg-main-container-1');
+				nextGameContainer.appendChild(nextGameBgContainer);
+
 				let nextListMainTitle = document.createElement('h1');
 				nextListMainTitle.classList.add('next-list-main-title');
-				nextListMainTitle.textContent = 'YA VIENE';
+				nextListMainTitle.textContent = 'YA VIENE:';
 				nextListMainTitleContainer.appendChild(nextListMainTitle);
 
+				let firstDivisor = document.createElement('div');
+				firstDivisor.classList.add('first-divisor');
+				nextListMainTitleContainer.appendChild(firstDivisor);
+
+				nextGameContainer.classList.add('main-game-container');
 				nextGamesListContainer.appendChild(nextGameContainer);
 			} else if (i === 1) {
 				let nextListTitleContainer = document.createElement('div');
@@ -39,36 +62,62 @@ NodeCG.waitForReplicants(songName, nextRunsListSchedule).then(() => {
 
 				let nextListTitle = document.createElement('h1');
 				nextListTitle.classList.add('next-list-title');
-				nextListTitle.textContent = 'EN LISTA';
+				nextListTitle.textContent = 'EN LISTA:';
 				nextListTitleContainer.appendChild(nextListTitle);
+
+				let secondDivisor = document.createElement('div');
+				secondDivisor.classList.add('second-divisor');
+				nextListTitleContainer.appendChild(secondDivisor);
 			}
 
+			if (!nextGameContainer.classList.contains('main-game-container')) {
+				nextGameContainer.classList.add('not-main-game-container');
+
+				nextGameBgContainer.classList.add('next-game-bg-not-main-container-1');
+				nextGameContainer.appendChild(nextGameBgContainer);
+			}
+			nextGameContainer.classList.add('next-game-container');
 			nextGamesListContainer.appendChild(nextGameContainer);
 
-			let nextGameName = document.createElement('h2');
-			nextGameName.classList.add('next-game-name');
-			nextGameContainer.appendChild(nextGameName);
-
-			let nextGameInfoContainer = document.createElement('div');
-			nextGameInfoContainer.classList.add('next-game-info-container');
-			nextGameContainer.appendChild(nextGameInfoContainer);
-
-			let nextGameCategory = document.createElement('h3');
-			nextGameCategory.classList.add('next-game-category');
-			nextGameInfoContainer.appendChild(nextGameCategory);
+			let nextGameRunnersEstimateContainer = document.createElement('div');
+			nextGameRunnersEstimateContainer.classList.add('next-game-runners-estimate-container');
+			nextGameContainer.appendChild(nextGameRunnersEstimateContainer);
 
 			let nextGameRunner = document.createElement('h3');
 			nextGameRunner.classList.add('next-game-runner');
-			nextGameInfoContainer.appendChild(nextGameRunner);
+			nextGameRunnersEstimateContainer.appendChild(nextGameRunner);
 
 			let nextGameEstimate = document.createElement('h3');
 			nextGameEstimate.classList.add('next-game-estimate');
-			nextGameInfoContainer.appendChild(nextGameEstimate);
+			nextGameRunnersEstimateContainer.appendChild(nextGameEstimate);
 
-			nextGameName.textContent = newValue[i].game;
-			nextGameCategory.textContent = newValue[i].categoria;
 			nextGameRunner.textContent = joinRunnersNames(newValue[i].runners);
 			nextGameEstimate.textContent = newValue[i].estimado;
+
+			let nextGameNameContainer = document.createElement('div');
+			nextGameNameContainer.classList.add('next-game-name-container');
+			nextGameContainer.appendChild(nextGameNameContainer);
+
+			let nextGameName = document.createElement('h2');
+			nextGameName.classList.add('next-game-name');
+			nextGameNameContainer.appendChild(nextGameName);
+
+			nextGameName.textContent = newValue[i].game;
+
+			let nextGameCategoryPlatformContainer = document.createElement('div');
+			nextGameCategoryPlatformContainer.classList.add('next-game-category-platform-container');
+			nextGameContainer.appendChild(nextGameCategoryPlatformContainer);
+
+			let nextGameCategory = document.createElement('h3');
+			nextGameCategory.classList.add('next-game-category');
+			nextGameCategoryPlatformContainer.appendChild(nextGameCategory);
+
+			let nextGamePlatform = document.createElement('h3');
+			nextGamePlatform.classList.add('next-game-platform');
+			nextGameCategoryPlatformContainer.appendChild(nextGamePlatform);
+
+			nextGameCategory.textContent = newValue[i].categoria;
+			nextGamePlatform.textContent = newValue[i].plataforma;
 
 		}
 	})
@@ -107,11 +156,13 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 		index = 0;
 		console.log('cambie');
 		if (!(newValue.length > 0)) {
-			let incentiveTitleCont = document.querySelector('.incentive-title-container');
+			let incentiveTitleCont = document.querySelectorAll('.incentive-title-container');
 			if (incentiveTitleCont) {
-				while (incentiveTitleCont.firstChild) {
-					incentiveTitleCont.removeChild(incentiveTitleCont.firstChild);
-				}
+				incentiveTitleCont.forEach(title => {
+					if (incentiveContainer.contains(title)) {
+						incentiveContainer.removeChild(title);
+					}
+				})
 			}
 			if (chartContainer) {
 				while (chartContainer.firstChild) {
@@ -121,11 +172,13 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 			return;
 		}
 
-		let incentiveTitleCont = document.querySelector('.incentive-title-container');
+		let incentiveTitleCont = document.querySelectorAll('.incentive-title-container');
 		if (incentiveTitleCont) {
-			while (incentiveTitleCont.firstChild) {
-				incentiveTitleCont.removeChild(incentiveTitleCont.firstChild);
-			}
+			incentiveTitleCont.forEach(title => {
+				if (incentiveContainer.contains(title)) {
+					incentiveContainer.removeChild(title);
+				}
+			})
 		}
 		if (chartContainer) {
 			while (chartContainer.firstChild) {
@@ -286,10 +339,14 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 							}
 						}
 					})
-					
+
 					let winner = bidsSorted[0].currentAmount;
 
-					for (let i = 0; i < 4; i++) {
+					let total = 4
+					if (bidsSorted.length < 4) {
+						total = bidsSorted.length;
+					}
+					for (let i = 0; i < total; i++) {
 
 						let bidProgressBarContainer = document.createElement('div');
 						bidProgressBarContainer.classList.add('bid-progress-bar-container');
@@ -303,6 +360,7 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 						let bidProgressBar = document.createElement('span');
 						bidProgressBar.classList.add('bid-progress-bar');
 						bidProgressBarSubcontainer.appendChild(bidProgressBar);
+
 						bidProgressBar.style.width = ((bidsSorted[i].currentAmount / winner) * 100) + '%';
 
 						let progressBarCurrentTitle = document.createElement('h2');
@@ -319,6 +377,36 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 						bidProgressBarTotalContainer.appendChild(progressBarTotalTitle);
 						progressBarTotalTitle.textContent = bidsSorted[i].currentAmount;
 
+
+						if (i === 0) {
+							bidProgressBarSubcontainer.style.borderColor = '#691677'
+							bidProgressBarSubcontainer.style.boxShadow = '0px 0 15px -1px #691677'
+							bidProgressBar.style.backgroundColor = '#470f51'
+							bidProgressBarTotalContainer.style.backgroundColor = '#470f51';
+							bidProgressBarTotalContainer.style.borderColor = '#691677'
+							bidProgressBarTotalContainer.style.boxShadow = '0px 0 15px -1px #691677'
+						} else if (i === 1) {
+							bidProgressBarSubcontainer.style.borderColor = '#8a231a'
+							bidProgressBarSubcontainer.style.boxShadow = '0px 0 15px -1px #8a231a'
+							bidProgressBar.style.backgroundColor = '#51140f'
+							bidProgressBarTotalContainer.style.backgroundColor = '#51140f';
+							bidProgressBarTotalContainer.style.borderColor = '#8a231a'
+							bidProgressBarTotalContainer.style.boxShadow = '0px 0 15px -1px #8a231a'
+						} else if (i === 2) {
+							bidProgressBarSubcontainer.style.borderColor = '#184179'
+							bidProgressBarSubcontainer.style.boxShadow = '0px 0 15px -1px #184179'
+							bidProgressBar.style.backgroundColor = '#0f2b51'
+							bidProgressBarTotalContainer.style.backgroundColor = '#0f2b51';
+							bidProgressBarTotalContainer.style.borderColor = '#184179'
+							bidProgressBarTotalContainer.style.boxShadow = '0px 0 15px -1px #184179'
+						} else {
+							bidProgressBarSubcontainer.style.borderColor = '#827d18'
+							bidProgressBarSubcontainer.style.boxShadow = '0px 0 15px -1px #827d18'
+							bidProgressBar.style.backgroundColor = '#514e0f'
+							bidProgressBarTotalContainer.style.backgroundColor = '#514e0f';
+							bidProgressBarTotalContainer.style.borderColor = '#827d18'
+							bidProgressBarTotalContainer.style.boxShadow = '0px 0 15px -1px #827d18'
+						}
 					}
 
 					activeIncentivesTag.push(bidwarProgressBarsContainer);
@@ -366,7 +454,7 @@ NodeCG.waitForReplicants(activeIncentives).then(() => {
 				progressBar.style.width = width + 'px';
 
 				progressBarCurrentTitle.textContent = formatter.format(incentive.currentAmount);
-				progressBarPorcentage.textContent = (width / totalWidth) * 100 + '%';
+				progressBarPorcentage.textContent = Math.trunc((width / totalWidth) * 100) + '%';
 				progressBarTotalTitle.textContent = formatter.format(incentive.goal);
 
 				activeIncentivesTag.push(progressBarContainer);
@@ -431,9 +519,63 @@ randChart.addEventListener('click', () => {
 	// })
 })
 
-let formatter = new Intl.NumberFormat('en-US', {
+const activePrizes = nodecg.Replicant('activePrizes');
+let titlePrizeContainer = document.querySelector('.title-prize-container');
+let prizeContainer = document.querySelector('.prize-container');
+
+NodeCG.waitForReplicants(activePrizes).then(() => {
+	activePrizes.on('change', (newValue, oldValue) =>{
+		let titlesContainer = document.querySelectorAll('.title-prize-name-container');
+		if (titlesContainer) {
+			titlesContainer.forEach(title => {
+				if (titlePrizeContainer.contains(title)) {
+					titlePrizeContainer.removeChild(title);
+				}
+			})
+		}
+
+		let prizeImgContainer = document.querySelectorAll('.prize-img-container');
+		if (prizeImgContainer) {
+			prizeImgContainer.forEach(img => {
+				if (prizeContainer.contains(img)) {
+					prizeContainer.removeChild(img);
+				}
+			})
+		}
+		
+		newValue.forEach(prize => {
+			let titlePrizeNameContainer = document.createElement('div');
+			titlePrizeNameContainer.classList.add('title-prize-name-container');
+			titlePrizeContainer.appendChild(titlePrizeNameContainer);
+
+			let titlePrize = document.createElement('h1');
+			titlePrize.classList.add('title-prize');
+			titlePrizeNameContainer.appendChild(titlePrize);
+
+			let titlePrizeAmount = document.createElement('h3');
+			titlePrizeAmount.classList.add('title-prize-amount');
+			titlePrizeNameContainer.appendChild(titlePrizeAmount);
+
+			titlePrize.textContent = prize.name;
+			titlePrizeAmount.textContent = `Donacion minima de: ${formatter.format(prize.value)}`;
+
+			let prizeImgContainer = document.createElement('div');
+			prizeImgContainer.classList.add('prize-img-container');
+			prizeContainer.appendChild(prizeImgContainer);
+
+			let prizeImg = document.createElement('img');
+			prizeImg.classList.add('prize-img');
+			prizeImgContainer.appendChild(prizeImg);
+
+			prizeImg.src = prize.url;
+		})
+		
+	})
+})
+
+let formatter = new Intl.NumberFormat('de-DE', {
 	style: 'currency',
-	currency: 'USD',
+	currency: 'EUR',
 	minimumFractionDigits: 0,
 	maximumFractionDigits: 0,
 });

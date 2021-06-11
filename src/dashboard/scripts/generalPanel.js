@@ -31,34 +31,20 @@ NodeCG.waitForReplicants(raceModeEnabled, racePlayersName).then(() => {
 			playersLabels[i].textContent = `${value.twitch[i]}`;
 			playersTwitchLinks[i].href = `http://twitch.tv/${value.twitch[i]}`
 		}
+
+		if (racePlayersName.value.playing > 1) {
+			playersQuantity.selectedIndex = value.playing - 2;
+			console.log(playersQuantity.childNodes[racePlayersName.value.playing - 2], racePlayersName.value.playing - 2);
+		} else {
+			playersQuantity.selectedIndex = 0;
+		}
+		showPlayers()
 	})
 
 	raceModeEnabled.on('change', (value) => {
 		resetLinksFunction()
 		raceMode.checked = value;
-		playersQuantity.selectedIndex = racePlayersName.value.playing - 2;
-		raceModePlayersInput.firstChild.style.display = 'flex';
-		if (value) {
-			document.querySelector('.body-container').style.gridTemplateRows = '.7fr 1fr 1fr 1fr';
-			nodecg.sendMessage('raceMode', true);
-			if (racePlayersName.value.playing === 1) {
-				playersQuantity.selectedIndex = 0;
-				racePlayersName.value.playing = 2;
-			}
-			for (let i = 1; i < raceModePlayersInput.childNodes.length; i++) {
-				raceModePlayersInput.childNodes[i].style.display = 'flex';
-			}
-			playersQuantityContainer.style.display = 'flex';
-			setInputPlayersName()
-		} else {
-			document.querySelector('.body-container').style.gridTemplateRows = '.2fr 1fr 1fr 1fr';
-			racePlayersName.value.playing = 1;
-			for (let i = 1; i < raceModePlayersInput.childNodes.length; i++) {
-				raceModePlayersInput.childNodes[i].style.display = 'none';
-			}
-			playersQuantityContainer.style.display = 'none';
-			playersDones[0].style.display = 'none';
-		}
+		showPlayers()
 	})
 
 	tokenLinks.on('change', (value) => {
@@ -88,6 +74,31 @@ function setInputPlayersName() {
 		} else {
 			playersContainer[i].style.display = 'none';
 		}
+	}
+}
+
+function showPlayers() {
+	raceModePlayersInput.firstChild.style.display = 'flex';
+	if (raceModeEnabled.value) {
+		document.querySelector('.body-container').style.gridTemplateRows = '.7fr 1fr 1fr 1fr';
+		nodecg.sendMessage('raceMode', true);
+		// if (racePlayersName.value.playing === 1) {
+		// 	playersQuantity.selectedIndex = 0;
+		// 	racePlayersName.value.playing = 2;
+		// }
+		for (let i = 1; i < raceModePlayersInput.childNodes.length; i++) {
+			raceModePlayersInput.childNodes[i].style.display = 'flex';
+		}
+		playersQuantityContainer.style.display = 'flex';
+		setInputPlayersName()
+	} else {
+		document.querySelector('.body-container').style.gridTemplateRows = '.2fr 1fr 1fr 1fr';
+		// racePlayersName.value.playing = 1;
+		for (let i = 1; i < raceModePlayersInput.childNodes.length; i++) {
+			raceModePlayersInput.childNodes[i].style.display = 'none';
+		}
+		playersQuantityContainer.style.display = 'none';
+		playersDones[0].style.display = 'none';
 	}
 }
 
@@ -201,7 +212,7 @@ NodeCG.waitForReplicants(generalRunInfo).then(() => {
 		generalText[2].value = value.estimate;
 		generalText[3].value = value.platform;
 		generalText[4].value = value.host;
-		scheduleNumberInput.value = value.runId+1;
+		scheduleNumberInput.value = value.runId + 1;
 		// actualScheduleNumber.innerHTML = value.runId;
 	})
 })
@@ -227,7 +238,7 @@ generalRunButtons[2].addEventListener('click', (e) => {
 })
 
 generalRunButtons[3].addEventListener('click', (e) => {
-	nodecg.sendMessage('manualSchedule', scheduleNumberInput.value-1);
+	nodecg.sendMessage('manualSchedule', scheduleNumberInput.value - 1);
 })
 
 const incentivesSelect = document.querySelector('.incentives-select');
@@ -330,7 +341,7 @@ NodeCG.waitForReplicants(prizesList, activePrizes).then(() => {
 
 	activePrizes.on('change', (newValue, oldValue) => {
 		// console.log('entrando aqui');
-		// console.log(newValue)
+		console.log(newValue)
 		while (activePrizesSelect.firstChild) {
 			activePrizesSelect.removeChild(activePrizesSelect.firstChild);
 		}
@@ -381,12 +392,12 @@ activeToPrizeButton.addEventListener('click', () => {
 	}
 })
 
-createPrizeButton.addEventListener('click',()=>{
+createPrizeButton.addEventListener('click', () => {
 	let newPrize = {};
 	newPrize.name = newPrizeInputs[0].value;
 	newPrize.value = newPrizeInputs[1].value;
 	newPrize.url = newPrizeInputs[2].value;
-	
+
 	newPrizeInputs.forEach(element => {
 		element.value = "";
 	});

@@ -2,13 +2,6 @@ const nodecgApiContext = require("./nodecg-api-context");
 
 const nodecg = nodecgApiContext.get();
 
-const usernameTimer = nodecg.Replicant('usernameTimer', {
-	defaultValue: 'admin'
-});
-const passwordTimer = nodecg.Replicant('passwordTimer', {
-	defaultValue: 'password'
-});
-
 const timer = nodecg.Replicant('timer', {
 	defaultValue: {
 		hours: `00`,
@@ -95,4 +88,8 @@ const prizesList = nodecg.Replicant('prizesList', {
 const activePrizes = nodecg.Replicant('activePrizes', {
 	defaultValue: [],
 	persistent: false
+})
+
+const totalDonationAmount = nodecg.Replicant('totalDonationAmount', {
+	defaultValue: '0',
 })

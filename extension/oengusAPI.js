@@ -3,12 +3,36 @@ const nodecg = nodecgApiContext.get();
 // const requestRQ = require('./util/requestH');
 const axios = require('axios');
 
-let baseURLOengusTest = 'https://sandbox.oengus.io/api/marathons/';
+let baseURLOengusTest = nodecg.bundleConfig.baseURLOengus;
 
 const incentivesList = nodecg.Replicant('incentivesList');
 const activeIncentives = nodecg.Replicant('activeIncentives');
 
-axios.get(`${baseURLOengusTest}pruebasre8/incentives`).then((response) => {
+getIncentives();
+
+nodecg.listenFor('donationEvent', async (value) => {
+	if (!value) {
+		ack('False');
+		return;
+	}
+	let res = await getIncentives();
+});
+
+nodecg.listenFor('updateIncentives', async (value) => {
+	if (!value) {
+		ack('False');
+		return;
+	}
+	let res = await getIncentives();
+});
+
+async function getIncentives() {
+	let response = await axios.get(`${baseURLOengusTest}pruebasre8/incentives`);
+	if (!response.data) {
+		console.error('error');
+		return false;
+	}
+
 	// console.log(response.data[2].bids);
 	// incentivesList.value = response.data;
 	// activeIncentives.value.push(response.data[0]);
@@ -29,7 +53,7 @@ axios.get(`${baseURLOengusTest}pruebasre8/incentives`).then((response) => {
 	let temp = Math.floor(Math.random() * (50 - 1) + 1);
 	response.data[2].currentAmount = temp;
 	incentivesList.value.push(response.data[2]);
-  // activeIncentives.value.push(response.data[1]);
+	// activeIncentives.value.push(response.data[1]);
 
 	totalAmount = 0;
 	response.data[4].bids.forEach((bid) => {
@@ -44,6 +68,6 @@ axios.get(`${baseURLOengusTest}pruebasre8/incentives`).then((response) => {
 
 	// console.log(response.data);
 	// console.log(totalAmount);
-}).catch(err => {
-	console.error(err);
-})
+	console.log('volvi a pedir incentivos');
+	return true;
+}

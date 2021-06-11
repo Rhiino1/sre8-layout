@@ -3,13 +3,37 @@
 
 <head>
 	<meta charset="UTF-8">
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="https://kit.fontawesome.com/349210808d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div class="body-container">
+		<div class="bg-container">
+			<video playsinline autoplay muted loop class="bg-video">
+				<source src="./images/background.mp4" type="video/mp4">
+			</video>
+		</div>
+		<div class="top-container">
+			<div class="logo-sre8-container">
+				<div class="logo-bg-wrap neon">
+					<div class="logo-bg-container"></div>
+				</div>
+				<img class="logo-sre8" src="./images/SRE8.png" alt="">
+			</div>
+			<div class="total-amount-container">
+				<div class="total-amount-bg-wrap neon">
+					<div class="total-amount-bg-container"></div>
+				</div>
+				<h1 class="total-amount"></h1>
+			</div>
+		</div>
 		<div class="middle-container">
 			<div class="left-container">
+				<div class="incentives-bg-wrap">
+					<div class="incentive-bg-1"></div>
+					<div class="incentive-bg-2"></div>
+					<div class="incentive-bg-3"></div>
+				</div>
 				<div class="incentives-container">
 					<div class="chart-container">
 						<!-- <div class="bidwar-progress-bars-container">
@@ -57,12 +81,30 @@
 					</div>
 				</div>
 				<div class="prize-twitter-container">
-					<button id="show-chart">mostrar</button>
-					<button id="hide-chart">esconder</button>
-					<button id="rand-chart">rand</button>
+					<div class="title-prize-container">
+						<div class="title-prize-bg-container-wrap">
+							<div class="title-prize-bg-container-1"></div>
+							<div class="title-prize-bg-container-2"></div>
+						</div>
+						<div class="title-prize-name-container">
+							<h1 class="title-prize">PREMIO</h1>
+							<h3 class="title-prize-amount">Donacion minima de 5</h3>
+						</div>
+					</div>
+					<div class="prize-container">
+						<div class="prize-bg-container-wrap">
+							<div class="prize-bg-container-1"></div>
+							<div class="prize-bg-container-2"></div>
+						</div>
+						<!-- <div class="prize-img-container"><img class="prize-img" src="https://i.imgur.com/gfmmDeM.jpeg" alt=""></div> -->
+						<!-- <div class="prize-img-container"><img class="prize-img" src="https://imgur.com/67emOIt.jpeg" alt=""></div> -->
+					</div>
 				</div>
 			</div>
 			<div class="right-container">
+				<button id="show-chart" style="position: absolute; top: 25px">mostrar</button>
+				<button id="hide-chart" style="position: absolute; top: 35px">esconder</button>
+				<button id="rand-chart" style="position: absolute; display: none;">rand</button>
 				<div class="next-games-list-container" id="next-games-list-container">
 					<!-- <div class="next-list-main-title-container">
 						<h1>YA VIENE</h1>
@@ -106,22 +148,20 @@
 			</div>
 		</div>
 		<div class="aux-bar-container">
-			<div class="logo-sre8-aux-container">
-				<h1>SRE8</h1>
-			</div>
+			<div class="aux-divisor-container-initial"></div>
 			<div class="main-aux-content-container">
 				<div class="first-section-container">
-					<h1>Capitan Bublo</h1>
+					<span class="host-icon"><i class="fas fa-microphone"></i></span>
+					<h1 class="host-name">Capitan Bublo</h1>
 				</div>
 				<div class="second-section-container">
-					<h1 id="songName">Darude - Sandstorm</h1>
+					<span class="song-icon"><i class="fas fa-music"></i></span>
+					<h1 class="song-name">Darude - Sandstorm</h1>
 				</div>
 			</div>
-			<div class="total-amount-container">
-				<h1>$1.000</h1>
-			</div>
+			<div class="aux-divisor-total"></div>
 			<div class="logo-aecc-container">
-				<h1>AECC</h1>
+				<img src="./images/aecc-v1.png" class="aecc-logo" alt="">
 			</div>
 		</div>
 	</div>

@@ -364,10 +364,12 @@ async function generalScheduleFunction(horarioData, count = 0) {
 
 	if (runners.length > 1) {
 		raceModeEnabled.value = true;
-		racePlayers.value.playing = runners.length;
 	} else {
 		raceModeEnabled.value = false;
 	}
+
+	racePlayers.value.playing = runners.length;
+	nodecg.log.info(racePlayers.value.playing)
 	for (let i = 0; i < runners.length; i++) {
 		racePlayers.value.players[i] = runners[i].name;
 		racePlayers.value.twitch[i] = runners[i].twitch;
